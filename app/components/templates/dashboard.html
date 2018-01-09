@@ -1,30 +1,13 @@
 <div class="dashboard">
   <div class="container-fluid">
-    <b-row>
-      <b-col class="notice">
+    <b-row class="notice">
+      <b-col>
         <h6 class="grey uppercase">
           Notices & announcements
         </h6>
         <span>
           CRV token ICO to launch in {{ days }} days
         </span>
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col class="notice text-left notify">
-        <h6 class="failure">
-          KYC Check Failed
-        </h6>
-        <div class="remarks">
-          <small>
-            <strong class="grey">
-              Remarks:
-            </strong>
-            <span class="failure">
-              Selfie blocks part of the passport, please reupload
-            </span>
-          </small>
-        </div>
       </b-col>
     </b-row>
   </div>
@@ -109,7 +92,7 @@
               </b-col>
             </b-row>
           </b-col>
-          <b-col xl="6" cols="12" class="lg-top-3rem d-none d-xl-block">
+          <b-col xl="6" cols="12" class="d-none d-xl-block">
             <h2>
                Join Us
             </h2>
@@ -298,71 +281,15 @@
     <b-card v-if="!verified" class="text-center wallet">
       <b-row class="no-margin">
         <b-col>
-          <b-link v-on:click="navigate('profile')" class="link">
-            Verify your account
-          </b-link> to contribute to the ICO and receive CRV tokens.
+          <h2 class="d-inline">
+            {{ numUsers }}
+          </h2> users to be processed
+          <b-button v-on:click="navigate('userMgmt')" variant="success" class="ml-3">
+            Process Now
+          </b-button>
         </b-col>
       </b-row>
     </b-card>
-
-    <b-row v-if="verified" class="text-center wallet no-margin">
-      <b-col cols="12" md="6">
-        <b-card footer-tag="footer">
-          <h5>
-            Your CRV Tokens Balance
-          </h5>
-          <h1>
-            {{ crv | numFormat }}
-          </h1>
-          <div slot="footer" class="footer-text">
-            You are qualified for <br/>
-            <span class="green">
-              Phase 1
-            </span> contributions
-          </div>
-        </b-card>
-      </b-col>
-      <b-col cols="12" md="6">
-        <b-card footer-tag="footer">
-          <h5>
-            You have contributed
-          </h5>
-          <h1>
-            {{ eth | numFormat }}
-            <sup>
-              ETH
-            </sup>
-          </h1>
-          <div slot="footer">
-            <b-button>
-              Contribute More
-            </b-button>
-          </div>
-        </b-card>
-      </b-col>
-    </b-row>
-
-    <b-card class="text-left transactions" v-if="transactions.length > 0">
-      <h5>
-        Transaction History
-        <span class="tx-count">
-          {{ transactions.length }} transactions
-        </span>
-      </h5>
-      <b-table responsive="sm" :items="transactions" class="mt-3 grey-table-head"></b-table>
-    </b-card>
-
-    <div class="empty-txn-wrapper" v-if="transactions.length == 0">
-      <b-card class="notif">
-        No transactions found
-      </b-card>
-      <b-card class="text-left empty transactions">
-        <h5>
-          Transaction History
-        </h5>
-        <b-table responsive="sm" :items="emptyTxn" class="mt-3 grey-table-head"></b-table>
-      </b-card>
-    </div>
 
   </div>
 </div>

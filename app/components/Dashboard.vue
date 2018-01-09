@@ -12,29 +12,11 @@
     },
     data() {
       return {
-        verified: false,
-        crv: 3095,
-        eth: 10.5,
+        numUsers: 51,
         collected: 204563,
         target: 500000,
         timer: null,
         count: this.getTimer(),
-        transactions: [
-          // { TxHash: 2345255, block: '4325t234', age: 40, from: 'Dickerson', to: 'Macdonald' },
-          // { TxHash: 2345255, block: '4325t234', age: 21, from: 'Larsen', to: 'Shaw' },
-          // { TxHash: 2345255, block: '4325t234', age: 89, from: 'Geneva', to: 'Wilson' },
-          // { TxHash: 2345255, block: '4325t234', age: 38, from: 'Jami', to: 'Carney' },
-          // { TxHash: 2345255, block: '4325t234', age: 40, from: 'Dickerson', to: 'Macdonald' },
-          // { TxHash: 2345255, block: '4325t234', age: 21, from: 'Larsen', to: 'Shaw' },
-        ],
-        emptyTxn: [
-          { TxHash: 2345255, block: '4325t234', age: 40, from: 'Dickerson', to: 'Macdonald' },
-          { TxHash: 2345255, block: '4325t234', age: 21, from: 'Larsen', to: 'Shaw' },
-          { TxHash: 2345255, block: '4325t234', age: 89, from: 'Geneva', to: 'Wilson' },
-          { TxHash: 2345255, block: '4325t234', age: 38, from: 'Jami', to: 'Carney' },
-          { TxHash: 2345255, block: '4325t234', age: 89, from: 'Geneva', to: 'Wilson' },
-          { TxHash: 2345255, block: '4325t234', age: 38, from: 'Jami', to: 'Carney' }
-        ]
       }
     },
     methods: {
@@ -88,20 +70,3 @@
 </script>
 <template src="./templates/dashboard.html"></template>
 <style src="./styles/dashboard.scss" lang="scss" scoped></style>
-<style>
-  .grey-table-head thead {
-    background: #f3f8fa;
-  }
-  .transactions th:first-child,
-  .transactions tr td:first-child {
-    padding-left: 30px;
-  }
-  .transactions th:last-child,
-  .transactions tr td:last-child {
-    padding-right: 15px;
-  }
-  .transactions th {
-    font-weight: bold;
-    color: #b3beca;
-  }
-</style>

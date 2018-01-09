@@ -19,39 +19,17 @@
           Dashboard
         </span>
       </b-nav-item>
-      <b-nav-item :active="isActive('profile')" v-on:click="navigate('profile')">
+      <b-nav-item :active="isActive('userMgmt')" v-on:click="navigate('userMgmt')">
         <span class="img-wrapper text-center">
-          <img src="~@/assets/images/full-size-my-profile-icon.png" alt="">
+          <img src="~@/assets/images/full-size-user-mgmt-icon.png" alt="">
         </span>
         <span class="nav-text">
-          My Profile
-        </span>
-      </b-nav-item>
-      <b-nav-item :active="isActive('help')" v-on:click="navigate('help')">
-        <span class="img-wrapper text-center">
-          <img src="~@/assets/images/full-size-user-help-icon.png" alt="">
-        </span>
-        <span class="nav-text">
-          Help
-        </span>
-      </b-nav-item>
-      <b-nav-item :active="isActive('faq')" v-on:click="navigate('faq')">
-        <span class="img-wrapper text-center">
-          <img src="~@/assets/images/full-size-faq-icon.png" alt="">
-        </span>
-        <span class="nav-text">
-          FAQ
+          User Management
         </span>
       </b-nav-item>
       <b-nav-item class="border-top pt-3 pb-3 mt-3">
-        <span class="img-wrapper text-center">
-          <!-- Enter authentication status -->
-          <i class="fa fa-check success-back round-icon" aria-hidden="true" v-if="isVerified"></i>
-          <i class="fa fa-ellipsis-h pending-back round-icon" aria-hidden="true" v-if="false"></i>
-          <i class="fa fa-ellipsis-h grey-back round-icon" aria-hidden="true" v-if="!isVerified"></i>
-        </span>
         <span class="nav-text label">
-           Christine Lim
+           Crowdvilla Admin 1
         </span>
       </b-nav-item>
       <b-nav-item class="dim label logout border-top nav-link pt-3" v-on:click="signOut">

@@ -17,6 +17,7 @@
     data() {
       return {
         component: 'dashboard',
+        activeItem: 'dashboard'
       };
     },
     computed: {
@@ -27,7 +28,11 @@
     methods: {
       navigate(event) {
         vm.component = event;
+        this.setActive(event);
       },
+      setActive: function (menuItem) {
+        this.activeItem = menuItem;
+      }
     },
   };
 </script>
@@ -36,11 +41,11 @@
     <Header />
     <MobileHeader v-on:event-navigate="navigate" />
     <div class="page">
-      <Sidebar id="Sidebar" v-on:event-navigate="navigate" />
+      <Sidebar id="Sidebar" v-on:event-navigate="navigate" :activeItem="activeItem"/>
       <div class="side-page">
         <Dashboard v-if="component == 'dashboard'" v-on:event-navigate="navigate" />
         <!-- <Profile v-if="component == 'profile'" /> -->
-        <KYC v-if="component === 'profile'" />
+        <KYC v-if="component === 'userMgmt'" />
       </div>
     </div>
   </div>
