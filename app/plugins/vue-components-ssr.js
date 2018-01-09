@@ -1,0 +1,37 @@
+import Vue from 'vue';
+import Recaptcha from 'vue-recaptcha';
+
+import Dashboard from '../components/Dashboard.vue';
+import Footer from '../components/Footer.vue';
+import ForgotPassword from '../components/ForgotPassword.vue';
+import Header from '../components/Header.vue';
+import KYC from '../components/KYC.vue';
+import Login from '../components/Login.vue';
+import Logo from '../components/Logo.vue';
+import MailChimp from '../components/MailChimp.vue';
+import Particles from '../components/Particles.vue';
+import Profile from '../components/Profile.vue';
+import Registration from '../components/Registration.vue';
+import Sidebar from '../components/Sidebar.vue';
+import NeedHelp from "../components/NeedHelp.vue";
+import Notify from '../components/Notify.vue';
+import MobileHeader from "../components/MobileHeader.vue";
+import StatusIcon from "../components/StatusIcon.vue";
+
+Vue.component('Dashboard', Dashboard);
+Vue.component('Footer', Footer);
+Vue.component('ForgotPassword', ForgotPassword);
+Vue.component('KYC', KYC);
+Vue.component('Header', Header);
+Vue.component('Login', Login);
+Vue.component('Logo', Logo);
+Vue.component('MailChimp', MailChimp);
+Vue.component('Particles', Particles);
+Vue.component('Profile', Profile);
+Vue.component('Recaptcha', Recaptcha);
+Vue.component('Registration', Registration);
+Vue.component("Sidebar", Sidebar);
+Vue.component("NeedHelp", NeedHelp);
+Vue.component("Notify", Notify);
+Vue.component("MobileHeader", MobileHeader);
+Vue.component("StatusIcon", StatusIcon);
