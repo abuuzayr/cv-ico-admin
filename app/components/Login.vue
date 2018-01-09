@@ -34,8 +34,7 @@
         email: '',
         password: '',
         recaptcha: '',
-        // recaptchaKey: process.env.RECAPTCHA,
-        recaptchaKey: '6LeJaj0UAAAAALamYXRiYtJQR4xyH8SnZCgqNNnL',
+        recaptchaKey: process.env.RECAPTCHA,
       };
     },
     computed: {
