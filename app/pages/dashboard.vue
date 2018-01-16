@@ -6,7 +6,7 @@
 
   export default {
     name: 'Dashboard-Page',
-    // middleware: 'unauthenticated',
+    middleware: 'unauthenticated',
     beforeMount() {
       vm.$axios.setToken(vm.authentication.accessToken, 'Bearer');
     },
@@ -45,7 +45,7 @@
       <div class="side-page">
         <Dashboard v-if="component == 'dashboard'" v-on:event-navigate="navigate" />
         <!-- <Profile v-if="component == 'profile'" /> -->
-        <KYC v-if="component === 'userMgmt'" />
+        <UserMgmt v-if="component === 'userMgmt'" />
       </div>
     </div>
   </div>
@@ -69,6 +69,7 @@
     background: #f3f7fa;
     min-height: calc(100vh);
     height: 100%;
+    overflow-y: hidden;
   }
 
   .dashboard-page {
