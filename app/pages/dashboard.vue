@@ -6,7 +6,7 @@
 
   export default {
     name: 'Dashboard-Page',
-    // middleware: 'unauthenticated',
+    middleware: 'unauthenticated',
     beforeMount() {
       vm.$axios.setToken(vm.authentication.accessToken, 'Bearer');
     },
