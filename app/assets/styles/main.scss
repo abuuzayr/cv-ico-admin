@@ -1,5 +1,6 @@
 //== Libraries
 @import '~bourbon/app/assets/stylesheets/bourbon';
+@import './vtooltip.scss';
 
 //== Colors
 
@@ -12,6 +13,7 @@ $light-green:               #B1DB50;
 $dark-green:                #7DBA3B;
 $light-grey:                #B2B3B4;
 $grey:                      #7E8189;
+$x-light-grey:              #F2F8FB;
 $orange:                    #F0AD4E;
 $light-red:                 #DE5F66;
 $red:                       #E54D42;
@@ -86,6 +88,18 @@ $zindex-tooltip:           1070 !default;
 $font-condensed: 'Roboto Condensed', serif;
 $font-normal: 'Roboto', serif;
 
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  outline: none;
+}
+
+body,
+.btn,
+.form-control {
+  font-size: 0.8rem;
+}
+
 // == Mixins
 
 @mixin page-mixin() {
@@ -155,6 +169,11 @@ $font-normal: 'Roboto', serif;
   color: $grey;
 }
 
+.light-grey-link a {
+  color: $light-grey;
+}
+
+
 .failure {
   color: $red;
 }
@@ -201,7 +220,6 @@ $font-normal: 'Roboto', serif;
 .card {
   margin: 15px;
   padding: 0px;
-  border: 1px solid #fff;
   border-radius: 6px;
   box-shadow: 1px 1px 3px 0 rgba(0,0,0,.10);
 }
@@ -212,6 +230,125 @@ $font-normal: 'Roboto', serif;
 
 .input-group {
   border: 1px solid transparent;
+  flex-wrap: nowrap;
+}
+
+.b-form-group {
+  position: relative;
+}
+
+.icon-in-input button {
+  background: transparent;
+  border: none;
+  margin-right: 10px;
+  margin-left: -40px;
+  z-index: 999;
+  position: absolute;
+}
+
+.hr-white {
+  border-color: white;
+}
+
+.green-btn {
+  background: $green;
+  color: white;
+  border-color: $green;
+}
+
+.circle-green {
+  color: $green;
+  text-shadow: 0 0 0 $green;
+}
+
+.circle-orange {
+  color: $orange;
+  text-shadow: 0 0 0 $orange;
+}
+
+.table-hover tbody tr:hover {
+  background-color: $x-light-grey;
+}
+
+.page-link {
+  border: none;
+  color: $light-grey;
+}
+
+.page-link:hover {
+  color: $grey;
+}
+
+.page-item.active .page-link {
+  background: none;
+  color: $grey;
+  font-weight: bold;
+}
+
+.form-control:focus,
+.btn-primary:not([disabled]):not(.disabled):active:focus, 
+.btn-primary:not([disabled]):not(.disabled).active:focus, 
+.show > .btn-primary.dropdown-toggle:focus,
+.btn-primary:focus,
+.btn-primary.focus {
+  box-shadow: none;
+}
+
+.left-icon-in-input .btn {
+  background: none;
+  border-right: 0;
+  height: 38px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  padding-right: 0;
+  border-color: rgb(206, 212, 218);
+}
+
+.input-with-left-icon {
+  border-left: 0;
+  border-color: rgb(206, 212, 218) !important;
+}
+
+.table thead th {
+    border-bottom: none;
+}
+.grey-table-head thead {
+    background: #f3f8fa;
+}
+
+.pcw-5 {
+    min-width: 80px;
+    width: 5%;
+}
+
+.pcw-10 {
+    min-width: 130px;
+    width: 10%;
+}
+
+.pcw-15 {
+    min-width: 150px;
+    width: 15%;
+}
+
+.pcw-20 {
+    min-width: 200px;
+    width: 20%;
+}
+
+.pcw-25 {
+    min-width: 250px;
+    width: 25%;
+}
+
+.pcw-30 {
+    min-width: 300px;
+    width: 30%;
+}
+
+.pcw-35 {
+    min-width: 350px;
+    width: 35%;
 }
 
 @media (min-width: $screen-sm-min) {
@@ -223,3 +360,4 @@ $font-normal: 'Roboto', serif;
     display: none !important;
   }
 }
+ 
