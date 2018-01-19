@@ -6,12 +6,12 @@
 
   // sample data
   const users = [
-                { name: 'McDonald', dob: '4325t234', _country: 40, _id_scan: '', _id_selfie: '', _por: '' },
-                { name: 'Simon', dob: '4325t234', _country: 21, _id_scan: '', _id_selfie: '', _por: '' },
-                { name: 'Eric', dob: '4325t234', _country: 89, _id_scan: '', _id_selfie: '', _por: '' },
-                { name: 'Christine Lim', dob: '4325t234', _country: 38, _id_scan: '', _id_selfie: '', _por: '' },
-                { name: 'Real Name', dob: '4325t234', _country: 40, _id_scan: '', _id_selfie: '', _por: '' },
-                { name: 'Cristiano Messi', dob: '4325t234', _country: 21, _id_scan: '', _id_selfie: '', _por: '' },
+                { id: 1, name: 'McDonald', dob: '1', _country: 40, _id_scan: '', _id_selfie: '', _por: '' },
+                { id: 2, name: 'Simon', dob: '2', _country: 21, _id_scan: '', _id_selfie: '', _por: '' },
+                { id: 3, name: 'Eric', dob: '3', _country: 89, _id_scan: '', _id_selfie: '', _por: '' },
+                { id: 4, name: 'Christine Lim', dob: '4', _country: 38, _id_scan: '', _id_selfie: '', _por: '' },
+                { id: 5, name: 'Real Name', dob: '5', _country: 40, _id_scan: '', _id_selfie: '', _por: '' },
+                { id: 6, name: 'Cristiano Messi', dob: '6', _country: 21, _id_scan: '', _id_selfie: '', _por: '' },
             ];
   const pendingUsers = [
                 { 
@@ -200,29 +200,44 @@
                 this.sortUser = 'name';
                 this.sortUserDesc = false;
             } else if (sortBy == 'dateAsc') {
-                this.sortUser = 'date';
+                this.sortUser = 'dob';
                 this.sortUserDesc = false;
             } else if (sortBy == 'dateDesc') {
-                this.sortUser = 'date';
+                this.sortUser = 'dob';
                 this.sortUserDesc = true;
             }
-        }
+        },
+        navigate(component, id) {
+            this.$emit('event-navigate', component, id);
+        },
     },
   };
 </script>
 <template src="./templates/user-mgmt.html"></template>
 <style src="./styles/user-mgmt.scss" lang="scss" scoped></style>
-<style>
+<style lang="scss">
     .users th:first-child,
     .users tr td:first-child {
         padding-left: 30px;
     }
+
     .users th:last-child,
     .users tr td:last-child {
         padding-right: 15px;
     }
+
     .users th {
         font-weight: bold;
         color: #b3beca;
+    }
+
+    .tooltip {
+        display: block !important;
+        width: 160px;
+
+        &.popover .popover-inner {
+            background: rgba(0,0,0,0.6);
+            color: white;
+        }
     }
 </style>

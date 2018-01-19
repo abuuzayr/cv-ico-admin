@@ -350,6 +350,15 @@ body,
     width: 35%;
 }
 
+.border-bottom {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.border-light-grey {
+  border-color: $light-grey;
+}
+
 @media (min-width: $screen-sm-min) {
   .card {
     margin: 40px;

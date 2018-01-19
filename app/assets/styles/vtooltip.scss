@@ -1,7 +1,8 @@
+$red: #E54D42;
+
 .tooltip {
+  display: none !important;
   z-index: 10000;
-  display: block !important;
-  width: 160px;
 
   .tooltip-inner {
     background: black;
@@ -9,7 +10,16 @@
     border-radius: 16px;
     padding: 5px 10px 4px;
   }
-  
+
+  &.warning {
+    .tooltip-inner {
+      background: $red;
+    }
+    .tooltip-arrow {
+      border-color: $red;
+    }
+  }
+
   .tooltip-arrow {
     width: 0;
     height: 0;
@@ -81,12 +91,23 @@
   }
 
   &.popover {
-    $color: rgba(0,0,0,0.6);
+    $color: #f9f9f9;
     font-size: 0.8rem;
+
+    &.warning {
+      background: $red;
+      .popover-inner {
+        background: $red;
+        color: #fff;
+      }
+      .popover-arrow {
+        border-color: $red;
+      }
+    }
 
     .popover-inner {
       background: $color;
-      color: white;
+      color: black;;
       border-radius: 5px;
       box-shadow: 0 5px 30px rgba(black, .1);
     }
@@ -106,5 +127,26 @@
     visibility: visible;
     opacity: 1;
     transition: opacity .15s;
+  }
+}
+
+.v-popover {
+  width: 100%;
+  span {
+    input {
+      width: 100%;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
+
+.v-popover.normal-input > span {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .tooltip {
+    display: block !important;
   }
 }
