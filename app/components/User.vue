@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       id: null,
-      usersLength: 201,
+      usersLength: users.length,
     }
   },
   methods: {
