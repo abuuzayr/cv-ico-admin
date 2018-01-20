@@ -72,7 +72,7 @@
             <img :src="`data:image/png;base64,${data.item._id_selfie}`" alt="">
           </template>
           <template slot="_actions" slot-scope="data">
-            <b-link class="d-inline-block mr-1" href="#">
+            <b-link class="d-inline-block mr-1" href="#" @click="navigate('user',data.item.id)">
               <i class="fa fa-pencil"></i>
             </b-link>
             <b-link class="d-inline-block" href="#">
@@ -147,12 +147,12 @@
           </template>
           <template slot="adminActions" slot-scope="data">
             <div class="d-inline-block mr-3">
-              <b-button :size="sm" class="green-btn">
+              <b-button size="sm" class="green-btn">
                 Approved
               </b-button>
             </div>
             <div class="d-inline-block">
-              <b-button :size="sm" variant="danger">
+              <b-button size="sm" variant="danger">
                 Rejected
               </b-button>
             </div>
@@ -167,7 +167,7 @@
                 </b-form-textarea>
               </b-col>
               <b-col cols="4">
-                <b-button :size="sm" class="green-btn">
+                <b-button size="sm" class="green-btn">
                   Submit
                 </b-button>
               </b-col>

@@ -17,7 +17,8 @@
     data() {
       return {
         component: 'dashboard',
-        activeItem: 'dashboard'
+        activeItem: 'dashboard',
+        userId: null,
       };
     },
     computed: {
@@ -26,9 +27,16 @@
       ]),
     },
     methods: {
-      navigate(event) {
+      navigate(event, id) {
+        if (id) {
+          this.userId = id;
+        }
         vm.component = event;
-        this.setActive(event);
+        if (event == 'user') {
+          this.setActive('userMgmt')
+        } else {
+          this.setActive(event);
+        }
       },
       setActive: function (menuItem) {
         this.activeItem = menuItem;
@@ -45,7 +53,8 @@
       <div class="side-page">
         <Dashboard v-if="component == 'dashboard'" v-on:event-navigate="navigate" />
         <!-- <Profile v-if="component == 'profile'" /> -->
-        <UserMgmt v-if="component === 'userMgmt'" />
+        <UserMgmt v-if="component === 'userMgmt'" v-on:event-navigate="navigate(...arguments)" />
+        <User v-if="component === 'user'" :userId="userId" v-on:event-navigate="navigate" />
       </div>
     </div>
   </div>

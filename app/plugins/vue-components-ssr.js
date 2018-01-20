@@ -8,6 +8,7 @@ import Sidebar from '../components/Sidebar.vue';
 import MobileHeader from "../components/MobileHeader.vue";
 import StatusIcon from "../components/StatusIcon.vue";
 import UserMgmt from "../components/UserMgmt.vue";
+import User from "../components/User.vue";
 
 Vue.component('Dashboard', Dashboard);
 Vue.component('Header', Header);
@@ -17,3 +18,4 @@ Vue.component("Sidebar", Sidebar);
 Vue.component("MobileHeader", MobileHeader);
 Vue.component("StatusIcon", StatusIcon);
 Vue.component("UserMgmt", UserMgmt);
+Vue.component("User", User);
