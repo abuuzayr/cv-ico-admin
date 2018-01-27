@@ -4,15 +4,6 @@
   // Declare global scoped vars
   let vm;
 
-  // sample data
-  const users = [
-                { id: 1, name: 'McDonald', dob: '1', _country: 40, _id_scan: '', _id_selfie: '', _por: '' },
-                { id: 2, name: 'Simon', dob: '2', _country: 21, _id_scan: '', _id_selfie: '', _por: '' },
-                { id: 3, name: 'Eric', dob: '3', _country: 89, _id_scan: '', _id_selfie: '', _por: '' },
-                { id: 4, name: 'Christine Lim', dob: '4', _country: 38, _id_scan: '', _id_selfie: '', _por: '' },
-                { id: 5, name: 'Real Name', dob: '5', _country: 40, _id_scan: '', _id_selfie: '', _por: '' },
-                { id: 6, name: 'Cristiano Messi', dob: '6', _country: 21, _id_scan: '', _id_selfie: '', _por: '' },
-            ];
   const pendingUsers = [
                 { 
                     status: 'pending', 
@@ -62,6 +53,13 @@
       // Instantiate view model
       vm = this;
     },
+    mounted() {
+        this.users = this.allUsers;
+        this.totalUserRows = this.allUsers.length;
+    },
+    props: [
+        'allUsers'
+    ],
     data() {
       return {
           userHeaders: [
@@ -102,10 +100,10 @@
                     class: 'pcw-15'
                 }
             ],
-            users: users,
+            users: [],
             currentUserPage: 1,
             perUserPage: 5,
-            totalUserRows: users.length,
+            totalUserRows: 0,
             userFilter: null,
             sortUser: null,
             sortUserDesc: false,

@@ -1,14 +1,6 @@
 <script>
 // Declare global scoped vars
 let vm;
-const users = [
-                  { id: 1, name: 'McDonald', dob: '1', _country: 40, _id_scan: '', _id_selfie: '', _por: '' },
-                  { id: 2, name: 'Simon', dob: '2', _country: 21, _id_scan: '', _id_selfie: '', _por: '' },
-                  { id: 3, name: 'Eric', dob: '3', _country: 89, _id_scan: '', _id_selfie: '', _por: '' },
-                  { id: 4, name: 'Christine Lim', dob: '4', _country: 38, _id_scan: '', _id_selfie: '', _por: '' },
-                  { id: 5, name: 'Real Name', dob: '5', _country: 40, _id_scan: '', _id_selfie: '', _por: '' },
-                  { id: 6, name: 'Cristiano Messi', dob: '6', _country: 21, _id_scan: '', _id_selfie: '', _por: '' },
-              ];
 
 export default {
   name: 'User',
@@ -18,14 +10,18 @@ export default {
   },
   mounted() {
     this.id = this.userId;
+    this.users = this.allUsers;
+    this.usersLength = this.allUsers.length;
   },
   props: [
-    'userId'
+    'userId',
+    'allUsers'
   ],
   data() {
     return {
       id: null,
-      usersLength: users.length,
+      usersLength: 0,
+      users: [],
     }
   },
   methods: {
@@ -41,7 +37,9 @@ export default {
   },
   computed: {
     activeUser() {
-      return users.find(function(element){
+      console.log(this.allUsers);
+      console.log(this.users);
+      return this.users.find(function(element){
         return element.id == vm.id;
       });
     }

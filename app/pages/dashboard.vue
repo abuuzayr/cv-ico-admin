@@ -19,6 +19,7 @@
         component: 'dashboard',
         activeItem: 'dashboard',
         userId: null,
+        users: []
       };
     },
     computed: {
@@ -53,8 +54,8 @@
       <div class="side-page">
         <Dashboard v-if="component == 'dashboard'" v-on:event-navigate="navigate" />
         <!-- <Profile v-if="component == 'profile'" /> -->
-        <UserMgmt v-if="component === 'userMgmt'" v-on:event-navigate="navigate(...arguments)" />
-        <User v-if="component === 'user'" :userId="userId" v-on:event-navigate="navigate" />
+        <UserMgmt v-if="component === 'userMgmt'" v-on:event-navigate="navigate(...arguments)" :allUsers="users" />
+        <User v-if="component === 'user'" :userId="userId" v-on:event-navigate="navigate" :allUsers="users" />
       </div>
     </div>
   </div>
