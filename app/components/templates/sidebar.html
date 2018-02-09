@@ -13,7 +13,15 @@
         <img src="~@/assets/images/full-size-user-mgmt-icon.png" alt="">
       </span>
       <span class="nav-text">
-        User Management
+        Users
+      </span>
+    </b-nav-item>
+    <b-nav-item :active="isActive('pendingUserMgmt')" v-on:click="navigate('pendingUserMgmt')">
+      <span class="img-wrapper text-center">
+        <img src="~@/assets/images/full-size-user-mgmt-icon.png" alt="">
+      </span>
+      <span class="nav-text">
+        Pending Users
       </span>
     </b-nav-item>
   </b-nav>

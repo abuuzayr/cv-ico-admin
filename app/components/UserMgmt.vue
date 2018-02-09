@@ -53,86 +53,8 @@
       // Instantiate view model
       vm = this;
     },
-    mounted() {
-        this.users = this.allUsers;
-        this.totalUserRows = this.allUsers.length;
-    },
-    props: [
-        'allUsers'
-    ],
     data() {
       return {
-          userHeaders: [
-                {
-                    key: '_actions',
-                    label: ' ',
-                    class: 'pcw-5 text-center light-grey-link'
-                },
-                {
-                    key: 'name',
-                    label: 'Full Name',
-                    sortable: true,
-                    class: 'pcw-30'
-                },
-                {
-                    key: 'dob',
-                    label: 'Date of Birth',
-                    sortable: true,
-                    class: 'pcw-10'
-                },
-                {
-                    key: '_country',
-                    class: 'pcw-10'
-                },
-                {
-                    key: '_id_scan_slot',
-                    label: 'Scan of ID / Passport',
-                    class: 'pcw-15'
-                },
-                {
-                    key: '_id_selfie_slot',
-                    label: 'Selfie with ID',
-                    class: 'pcw-15'
-                },
-                {
-                    key: '_por',
-                    label: 'Proof of Residence',
-                    class: 'pcw-15'
-                }
-            ],
-            users: [],
-            currentUserPage: 1,
-            perUserPage: 5,
-            totalUserRows: 0,
-            userFilter: null,
-            sortUser: null,
-            sortUserDesc: false,
-            pendingHeaders: [
-                {
-                    key: '_status',
-                    label: 'KYC Status',
-                    class: 'pcw-15'
-                },
-                {
-                    key: 'kycResponse',
-                    label: 'KYC Response',
-                    class: 'pcw-10'
-                },
-                {
-                    key: 'adminActions',
-                    label: 'Verification Status and Remarks (to Admin)',
-                    class: 'pcw-30'
-                },
-                {
-                    key: 'userActions',
-                    label: 'Verification Remarks (to User)',
-                    class: 'pcw-35'
-                }
-            ],
-            pendingUsers: pendingUsers,
-            currentPendingUserPage: 1,
-            perPendingUserPage: 5,
-            totalPendingUserRows: pendingUsers.length,
             referralHeaders: [
                 {
                     key: 'code',
@@ -169,18 +91,6 @@
             currentReferralCodePage: 1,
             perReferralCodePage: 5,
             totalReferralCodeRows: referralCodes.length,
-            sortBy: null,
-            sortOptions: [
-                { value: 'nameAsc', text: 'Sort by A-Z' },
-                { value: 'dateDesc', text: 'Sort by Date (Latest)' },
-                { value: 'dateAsc', text: 'Sort by Date (Earliest)' },
-            ],
-            filterBy: null,
-            filterOptions: [
-                { value: 'verified', text: 'Verified' },
-                { value: 'unverified', text: 'Unverified' },
-                { value: 'pending', text: 'Pending' },
-            ]
         };
     },
     computed: {
@@ -189,22 +99,6 @@
       ]),
     },
     methods: {
-        onUsersFiltered (filteredItems) {
-            this.totalUserRows = filteredItems.length;
-            this.currentUserPage = 1;
-        },
-        sortUsers (sortBy) {
-            if (sortBy == 'nameAsc') {
-                this.sortUser = 'name';
-                this.sortUserDesc = false;
-            } else if (sortBy == 'dateAsc') {
-                this.sortUser = 'dob';
-                this.sortUserDesc = false;
-            } else if (sortBy == 'dateDesc') {
-                this.sortUser = 'dob';
-                this.sortUserDesc = true;
-            }
-        },
         navigate(component, id) {
             this.$emit('event-navigate', component, id);
         },
@@ -213,29 +107,3 @@
 </script>
 <template src="./templates/user-mgmt.html"></template>
 <style src="./styles/user-mgmt.scss" lang="scss" scoped></style>
-<style lang="scss">
-    .users th:first-child,
-    .users tr td:first-child {
-        padding-left: 30px;
-    }
-
-    .users th:last-child,
-    .users tr td:last-child {
-        padding-right: 15px;
-    }
-
-    .users th {
-        font-weight: bold;
-        color: #b3beca;
-    }
-
-    .tooltip {
-        display: block !important;
-        width: 160px;
-
-        &.popover .popover-inner {
-            background: rgba(0,0,0,0.6);
-            color: white;
-        }
-    }
-</style>
