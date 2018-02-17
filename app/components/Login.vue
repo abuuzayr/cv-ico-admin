@@ -2,7 +2,6 @@
   import { mapActions } from 'vuex';
   import {
     email,
-    minLength,
     sameAs,
   } from 'vuelidate/lib/validators';
   import {
@@ -80,6 +79,7 @@
     methods: {
       ...mapActions({
         login: 'authentication/login',
+        setPersistence: 'user/setPersistence',
       }),
       feedbackEmail,
       feedbackPassword,
@@ -90,10 +90,11 @@
       setRecaptcha(event) {
         vm.recaptcha = event;
       },
-      submit(email, password, recaptcha) {
-        vm.login({ email, password, recaptcha })
+      submit(_email, _password, _recaptcha) {
+        vm.login({ email: _email, password: _password, recaptcha: _recaptcha })
           .then(() => {
-            vm.$router.push('dashboard');
+            vm.setPersistence();
+            vm.$router.push('/dashboard');
           })
           .catch((error) => {
             vm.$refs.recaptcha.reset();
@@ -107,6 +108,13 @@
                   text: 'The email or password entered is invalid.',
                 });
                 break;
+              case 403:
+                vm.$notify({
+                  group: 'announce-error',
+                  title: 'Access Forbidden',
+                  text: 'You are forbidden to access this module.',
+                });
+                break;
               case 406:
                 vm.$notify({
                   group: 'announce-error',
@@ -118,8 +126,8 @@
                 vm.$notify({
                   group: 'announce-error',
                   title: 'Unexpected Error Encountered',
-                  text: 'The application has encountered an unexpected error. \
-                         Please contact support.',
+                  text: `The application has encountered an unexpected error.
+                         Please contact support.`,
                 });
                 break;
             }

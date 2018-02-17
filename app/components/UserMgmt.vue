@@ -14,32 +14,32 @@
                 { id: 6, name: 'Cristiano Messi', dob: '6', _country: 21, _id_scan: '', _id_selfie: '', _por: '' },
             ];
   const pendingUsers = [
-                { 
-                    status: 'pending', 
+                {
+                    status: 'pending',
                     response: [
                         { date: new Date(), status: 'Pending' },
                         { date: new Date(), status: 'Pending' },
                         { date: new Date(), status: 'Approved' },
                     ]
                 },
-                { 
-                    status: 'pending', 
+                {
+                    status: 'pending',
                     response: []
                 },
-                { 
-                    status: 'pending', 
+                {
+                    status: 'pending',
                     response: []
                 },
-                { 
-                    status: 'approved', 
+                {
+                    status: 'approved',
                     response: []
                 },
-                { 
-                    status: 'pending', 
+                {
+                    status: 'pending',
                     response: []
                 },
-                { 
-                    status: 'pending', 
+                {
+                    status: 'pending',
                     response: []
                 },
             ];
@@ -185,6 +185,9 @@
             ]
         };
     },
+    // async mounted() {
+    //   const res = await vm.$axios.get('users?$select=kyc.first_name&$select=kyc.last_name');
+    // },
     computed: {
       ...mapState([
         'authentication',

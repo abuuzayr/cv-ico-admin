@@ -32,11 +32,7 @@
           this.userId = id;
         }
         vm.component = event;
-        if (event == 'user') {
-          this.setActive('userMgmt')
-        } else {
-          this.setActive(event);
-        }
+        this.setActive(event);
       },
       setActive: function (menuItem) {
         this.activeItem = menuItem;
@@ -52,8 +48,7 @@
       <Sidebar id="Sidebar" v-on:event-navigate="navigate" :activeItem="activeItem"/>
       <div class="side-page">
         <Dashboard v-if="component == 'dashboard'" v-on:event-navigate="navigate" />
-        <!-- <Profile v-if="component == 'profile'" /> -->
-        <UserMgmt v-if="component === 'userMgmt'" v-on:event-navigate="navigate(...arguments)" />
+        <UserMgmt v-if="component == 'userMgmt'" v-on:event-navigate="navigate" />
         <User v-if="component === 'user'" :userId="userId" v-on:event-navigate="navigate" />
       </div>
     </div>

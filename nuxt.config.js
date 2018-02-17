@@ -1,3 +1,4 @@
+const bourbon = require('bourbon');
 const postcsscssnext = require('postcss-cssnext');
 const path = require('path');
 const formatter = require('eslint-friendly-formatter');
@@ -12,7 +13,7 @@ module.exports = {
   */
   axios: {
     baseURL: 'http://localhost:1337',
-    credentials: false,
+    credentials: true,
     debug: true,
   },
   /*
@@ -23,7 +24,9 @@ module.exports = {
     ** Run ESLINT on save
     */
     extend(config, ctx) {
-      if (ctx.dev && ctx.isClient) {
+      global.Element = null;
+
+      if (ctx.isDev) {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
@@ -34,12 +37,23 @@ module.exports = {
             formatter,
           },
         });
+
+        const vueLoader = config.module.rules.find(rule => rule.loader === 'vue-loader');
+        vueLoader.options.loaders.scss.push({
+          loader: 'sass-loader',
+          options: {
+            includePaths: bourbon.includePaths,
+            sourceMap: true,
+          },
+        });
       }
     },
     postcss: [
       postcsscssnext(),
     ],
     vendor: [
+      'bourbon',
+      'v-tooltip',
       'vuelidate',
       'vue-notification',
       'vue-prism',
@@ -51,7 +65,7 @@ module.exports = {
   dev: process.env.NODE_ENV !== 'production',
   env: {
     HOST: process.env.HOST || 'localhost',
-    PORT: process.env.PORT || 1338,
+    PORT: process.env.PORT || 1339,
     RECAPTCHA: process.env.RECAPTCHA_KEY,
   },
   /*
@@ -73,10 +87,7 @@ module.exports = {
       { src: 'https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit', async: undefined, defer: undefined },
     ],
   },
-  /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#3B8070' },
+  loading: false,
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/bootstrap-vue',
@@ -84,11 +95,11 @@ module.exports = {
   ],
   plugins: [
     { src: '@/plugins/vue-components-ssr.js', ssr: true },
+    { src: '@/plugins/vue-plugins-ssr.js', ssr: false },
     { src: '@/plugins/vue-plugins.js', ssr: false },
     { src: '@/plugins/filters.js', ssr: true },
     { src: '@/plugins/local-storage.js', ssr: false },
     { src: '@/plugins/ga.js', ssr: false },
-    { src: '@/plugins/eth.js', ssr: false },
   ],
   srcDir: 'app/',
 };
