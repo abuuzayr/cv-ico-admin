@@ -1,3 +1,3 @@
 export default function ({ store, redirect }) {
-  return (!store.getters['user/isAuthenticated']) ? redirect('/') : null;
+  return (!store.getters['authentication/isAuthenticated']) ? redirect('/') : null;
 }
