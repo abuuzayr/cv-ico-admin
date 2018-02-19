@@ -1,0 +1,47 @@
+@import '~assets/styles/main.scss';
+
+.users {
+  .table-head {
+    background: $light-grey;
+  }
+  .user-count {
+    padding-left: 10px;
+    margin-left: 10px;
+    border-left: 1px solid $light-grey;
+    color: $light-grey;
+    font-size: 14px;
+  }
+}
+
+.card,
+.card-body {
+  padding: 0;
+}
+
+.card-body {
+  h5 {
+    padding: 1.25em 1.25em 0;
+  }
+}
+
+div::-webkit-scrollbar {
+  height:5px;
+}
+
+div::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: $light-grey;
+}
+
+div::-webkit-scrollbar-thumb {
+  background-color: $green;
+  border-radius: 10px;
+}
+
+.select-border .fa-check-circle {
+  color: white;
+}
+
+.select-border .selected .fa-check-circle {
+  color: red;
+}

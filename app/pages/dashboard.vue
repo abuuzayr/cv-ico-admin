@@ -19,6 +19,7 @@
         component: 'dashboard',
         activeItem: 'dashboard',
         userId: null,
+        users: []
       };
     },
     computed: {
@@ -32,11 +33,7 @@
           this.userId = id;
         }
         vm.component = event;
-        if (event == 'user') {
-          this.setActive('userMgmt')
-        } else {
-          this.setActive(event);
-        }
+        this.setActive(event);
       },
       setActive: function (menuItem) {
         this.activeItem = menuItem;
@@ -54,7 +51,8 @@
         <Dashboard v-if="component == 'dashboard'" v-on:event-navigate="navigate" />
         <!-- <Profile v-if="component == 'profile'" /> -->
         <UserMgmt v-if="component === 'userMgmt'" v-on:event-navigate="navigate(...arguments)" />
-        <User v-if="component === 'user'" :userId="userId" v-on:event-navigate="navigate" />
+        <PendingUserMgmt v-if="component === 'pendingUserMgmt'" v-on:event-navigate="navigate(...arguments)" />
+        <!-- <User v-if="component === 'user'" :userId="userId" v-on:event-navigate="navigate" :allUsers="users" /> -->
       </div>
     </div>
   </div>

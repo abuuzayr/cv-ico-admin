@@ -24,7 +24,7 @@
       }),
       signOut() {
         vm.logout().then(() => {
-          vm.$router.push('login');
+          vm.$router.push('/');
         });
       }
     },
