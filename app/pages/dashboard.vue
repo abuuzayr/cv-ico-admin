@@ -6,7 +6,7 @@
 
   export default {
     name: 'Dashboard-Page',
-    middleware: 'unauthenticated',
+    // middleware: 'unauthenticated',
     beforeMount() {
       vm.$axios.setToken(vm.authentication.accessToken, 'Bearer');
     },
@@ -19,7 +19,7 @@
         component: 'dashboard',
         activeItem: 'dashboard',
         userId: null,
-        users: []
+        users: [],
       };
     },
     computed: {
@@ -35,9 +35,9 @@
         vm.component = event;
         this.setActive(event);
       },
-      setActive: function (menuItem) {
+      setActive(menuItem) {
         this.activeItem = menuItem;
-      }
+      },
     },
   };
 </script>

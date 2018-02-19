@@ -37,8 +37,6 @@ export default {
   },
   computed: {
     activeUser() {
-      console.log(this.allUsers);
-      console.log(this.users);
       return this.users.find(function(element){
         return element.id == vm.id;
       });
