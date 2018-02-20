@@ -5,32 +5,32 @@
   let vm;
 
   const pendingUsers = [
-                { 
-                    status: 'pending', 
+                {
+                    status: 'pending',
                     response: [
                         { date: new Date(), status: 'Pending' },
                         { date: new Date(), status: 'Pending' },
                         { date: new Date(), status: 'Approved' },
                     ]
                 },
-                { 
-                    status: 'pending', 
+                {
+                    status: 'pending',
                     response: []
                 },
-                { 
-                    status: 'pending', 
+                {
+                    status: 'pending',
                     response: []
                 },
-                { 
-                    status: 'approved', 
+                {
+                    status: 'approved',
                     response: []
                 },
-                { 
-                    status: 'pending', 
+                {
+                    status: 'pending',
                     response: []
                 },
-                { 
-                    status: 'pending', 
+                {
+                    status: 'pending',
                     response: []
                 },
             ];
@@ -93,6 +93,9 @@
             totalReferralCodeRows: referralCodes.length,
         };
     },
+    // async mounted() {
+    //   const res = await vm.$axios.get('users?$select=kyc.first_name&$select=kyc.last_name');
+    // },
     computed: {
       ...mapState([
         'authentication',

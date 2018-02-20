@@ -1,5 +1,5 @@
 //== Libraries
-@import '~bourbon/app/assets/stylesheets/bourbon';
+@import '~bourbon/core/bourbon';
 @import './vtooltip.scss';
 
 //== Colors
@@ -290,8 +290,8 @@ body,
 }
 
 .form-control:focus,
-.btn-primary:not([disabled]):not(.disabled):active:focus, 
-.btn-primary:not([disabled]):not(.disabled).active:focus, 
+.btn-primary:not([disabled]):not(.disabled):active:focus,
+.btn-primary:not([disabled]):not(.disabled).active:focus,
 .show > .btn-primary.dropdown-toggle:focus,
 .btn-primary:focus,
 .btn-primary.focus {

@@ -6,7 +6,7 @@
 
   export default {
     name: 'Dashboard-Page',
-    middleware: 'unauthenticated',
+    // middleware: 'unauthenticated',
     beforeMount() {
       vm.$axios.setToken(vm.authentication.accessToken, 'Bearer');
     },
@@ -19,7 +19,7 @@
         component: 'dashboard',
         activeItem: 'dashboard',
         userId: null,
-        users: []
+        users: [],
       };
     },
     computed: {
@@ -35,9 +35,9 @@
         vm.component = event;
         this.setActive(event);
       },
-      setActive: function (menuItem) {
+      setActive(menuItem) {
         this.activeItem = menuItem;
-      }
+      },
     },
   };
 </script>
@@ -49,10 +49,8 @@
       <Sidebar id="Sidebar" v-on:event-navigate="navigate" :activeItem="activeItem"/>
       <div class="side-page">
         <Dashboard v-if="component == 'dashboard'" v-on:event-navigate="navigate" />
-        <!-- <Profile v-if="component == 'profile'" /> -->
         <UserMgmt v-if="component === 'userMgmt'" v-on:event-navigate="navigate(...arguments)" />
         <PendingUserMgmt v-if="component === 'pendingUserMgmt'" v-on:event-navigate="navigate(...arguments)" />
-        <!-- <User v-if="component === 'user'" :userId="userId" v-on:event-navigate="navigate" :allUsers="users" /> -->
       </div>
     </div>
   </div>
