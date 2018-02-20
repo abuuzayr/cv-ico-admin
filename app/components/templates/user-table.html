@@ -141,7 +141,7 @@
       </template>
       <template slot="kycResponse" slot-scope="data">
         <v-popover offset="" trigger="hover" placement="bottom">
-          <b-link class="">Logs</b-link>
+          <b-link class="" @click.stop>Logs</b-link>
           <template slot="popover">
             <div class="response-header" v-if="!data.item.kyc.kycResponse">
               No responses
@@ -160,12 +160,12 @@
             <div class="response-wrapper mb-1">
               <template v-for="response in data.item.kyc.kycResponse">
                 <div class="d-flex justify-content-between">
-                  <template v-for="(object, key) in kyc.kycResponse">
-                    <span v-if="key != 'date'">
-                      {{ object }}
+                  <template v-for="(object, key) in response">
+                    <span v-if="key != 'date'" :class="{ 'green': object, 'failure': !object }">
+                      {{ object ? 'Approved' : 'Rejected' }}
                     </span>
                     <span v-if="key == 'date'">
-                      {{ object | dateFormat }}
+                      {{ new Date(object) | dateFormat }}
                     </span>
                   </template>
                 </div>
@@ -176,12 +176,12 @@
       </template>
       <template slot="adminActions" slot-scope="data">
         <div class="d-inline-block mr-3" v-if="!data.item.isManualVerified">
-          <b-button size="sm" class="green-btn" v-on:click.prevent="approveLine(data.item._id)">
+          <b-button size="sm" class="green-btn" v-on:click.stop="approveLine(data.item._id)">
             Approve
           </b-button>
         </div>
         <div class="d-inline-block" v-if="data.item.isManualVerified">
-          <b-button size="sm" variant="danger" @click="rejectLine(data.item._id)">
+          <b-button size="sm" variant="danger" v-on:click.stop="rejectLine(data.item._id)">
             Reject
           </b-button>
         </div>
@@ -192,11 +192,13 @@
             <b-form-textarea 
               placeholder="Remarks"
               :rows="3"
-              :max-rows="3">              
+              :max-rows="3"
+              v-model="adminMessage"
+              @click.native.stop>
             </b-form-textarea>
           </b-col>
           <b-col cols="4">
-            <b-button size="sm" class="green-btn">
+            <b-button size="sm" class="green-btn" v-on:click.stop="submitMsg(data.item._id, data.item.adminMessages)" :disabled="!adminMessage">
               Submit
             </b-button>
           </b-col>

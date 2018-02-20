@@ -173,7 +173,11 @@
             // FOR SELECTION
 
             selectedRowIDs: [],
-            selectedIndexes: []
+            selectedIndexes: [],
+
+            // FOR MESSAGING
+
+            adminMessage: ''
         };
     },
     computed: {
@@ -251,6 +255,19 @@
         async getImage (blob) {
             const result = await vm.$axios.get(`documents/${blob}`);
             return result.data.uri;
+        },
+        submitMsg(userId, msgArr) {
+            if (typeof msgArr === 'undefined') {
+                msgArr = [];
+            }
+            msgArr.unshift({
+                'msg': vm.adminMessage,
+                'sent_by': vm.authentication.email
+            })
+            vm.$axios.patch(`users/${userId}`, {
+                'adminMessages': msgArr
+            });
+            vm.adminMessage = '';
         }
     },
   };
