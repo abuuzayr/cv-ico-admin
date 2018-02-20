@@ -1,56 +1,61 @@
 <template>
-  <div id="app">
-    <!-- <Particles
-      color="#F5F5F5"
-      :particleOpacity="0.7"
-      linesColor="#F5F5F5"
-      :particlesNumber="30"
-      shapeType="circle"
-      :particleSize="3"
-      :linesWidth="2"
-      :lineLinked="true"
-      :lineOpacity="0.4"
-      :linesDistance="150"
-      :moveSpeed="0.3"
-      :hoverEffect="true"
-      hoverMode="grab"
-      :clickEffect="true"
-      clickMode="push"
-    >
-    </Particles> -->
-    <no-ssr>
-      <notifications
-        group="announce-info"
-        position="top center"
-        classes="announce-info"
-        width="30%"
-        v-bind:duration="5000"
-        v-bind:max="3"
-      />
-    </no-ssr>
-    <no-ssr>
-      <notifications
-        group="announce-error"
-        position="top center"
-        classes="announce-error"
-        width="30%"
-        v-bind:duration="5000"
-        v-bind:max="3"
-      />
-    </no-ssr>
-    <no-ssr>
-      <notifications
-        group="notify"
-        position="bottom right"
-      />
-    </no-ssr>
-    <transition
-      appear
-      mode="out-in"
-      enter-active-class="animated fadeIn"
-    >
-      <nuxt />
-    </transition>
+  <div id="app" v-cloak>
+    <div v-if="initialized">
+      <!-- <Particles
+        color="#F5F5F5"
+        :particleOpacity="0.7"
+        linesColor="#F5F5F5"
+        :particlesNumber="30"
+        shapeType="circle"
+        :particleSize="3"
+        :linesWidth="2"
+        :lineLinked="true"
+        :lineOpacity="0.4"
+        :linesDistance="150"
+        :moveSpeed="0.3"
+        :hoverEffect="true"
+        hoverMode="grab"
+        :clickEffect="true"
+        clickMode="push"
+      >
+      </Particles> -->
+      <no-ssr>
+        <notifications
+          group="announce-info"
+          position="top center"
+          classes="announce-info"
+          width="30%"
+          v-bind:duration="5000"
+          v-bind:max="3"
+        />
+      </no-ssr>
+      <no-ssr>
+        <notifications
+          group="announce-error"
+          position="top center"
+          classes="announce-error"
+          width="30%"
+          v-bind:duration="5000"
+          v-bind:max="3"
+        />
+      </no-ssr>
+      <no-ssr>
+        <notifications
+          group="notify"
+          position="bottom right"
+        />
+      </no-ssr>
+      <transition
+        appear
+        mode="out-in"
+        enter-active-class="animated fadeIn"
+      >
+        <nuxt />
+      </transition>
+    </div>
+    <div v-else>
+      <LoadingScreen />
+    </div>
   </div>
 </template>
 
@@ -63,6 +68,14 @@
       return {
         title: this.appTitle,
       };
+    },
+    data() {
+      return {
+        initialized: false,
+      }
+    },
+    mounted() {
+      this.initialized = true;
     },
     computed: {
       ...mapState([
@@ -126,5 +139,11 @@
       text-transform: uppercase;
       color: $white;
     }
+  }
+
+  .notification.warning {
+    background: $red;
+    color: $white;
+    border-color: #b22222;
   }
 </style>

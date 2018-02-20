@@ -83,6 +83,11 @@ $zindex-modal:             1050 !default;
 $zindex-popover:           1060 !default;
 $zindex-tooltip:           1070 !default;
 
+//== v-cloak
+[v-cloak] {
+  display: none;
+}
+
 // == Fonts
 
 $font-condensed: 'Roboto Condensed', serif;
@@ -357,6 +362,10 @@ body,
 
 .border-light-grey {
   border-color: $light-grey;
+}
+
+.green {
+  color: $green;
 }
 
 @media (min-width: $screen-sm-min) {
